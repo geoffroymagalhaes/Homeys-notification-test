@@ -1,10 +1,10 @@
 <script setup>
-import BaseNotificationVue from './components/BaseNotification.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
   <main :class="'container'">
-    <BaseNotificationVue />
+    <RouterView />
   </main>
 </template>
 
@@ -14,6 +14,7 @@ import BaseNotificationVue from './components/BaseNotification.vue'
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 32px;
   height: 100vh;
 }
 </style>

@@ -1,8 +1,31 @@
 <template>
-  <div :class="'notificationContainer'">
+  <div :class="`notificationContainer ${type}`">
     <div :class="'notificationHead'">
       <div>
-        <img :class="'notificationIcon'" src="../assets/icons/CheckCircle.svg" alt="checkCircle" />
+        <img
+          v-if="type === 'danger'"
+          class="notificationIcon"
+          src="../assets/icons/Danger.svg"
+          alt="dangerIcon"
+        />
+        <img
+          v-if="type === 'success'"
+          class="notificationIcon"
+          src="../assets/icons/CheckCircle.svg"
+          alt="successIcon"
+        />
+        <img
+          v-if="type === 'warning'"
+          class="notificationIcon"
+          src="../assets/icons/Warning.svg"
+          alt="warningIcon"
+        />
+        <img
+          v-if="type === 'info'"
+          class="notificationIcon"
+          src="../assets/icons/Info.svg"
+          alt="infoIcon"
+        />
         <h1 :class="'notificationTitle'">Modal Window</h1>
       </div>
 
@@ -16,16 +39,16 @@
   </div>
 </template>
 
-<script></script>
+<script setup>
+const props = defineProps(['type'])
+</script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 .notificationContainer {
-  background-color: #e4f7e8;
   padding: 24px;
   border-radius: 16px;
-  border: solid 2px #89b291;
   width: 527px;
   height: 160px;
   font-family: 'DM Sans', sans-serif;
@@ -67,5 +90,21 @@
   border: none;
   width: 20px;
   height: 20px;
+}
+.danger {
+  background-color: #f7e4e4;
+  border: solid 2px #d29393;
+}
+.warning {
+  background-color: #f7f2e4;
+  border: solid 2px #d4c296;
+}
+.success {
+  background-color: #e4f7e8;
+  border: solid 2px #89b291;
+}
+.info {
+  background-color: #e4e9f7;
+  border: solid 2px #96a8d8;
 }
 </style>
