@@ -4,21 +4,17 @@
       v-for="notification in notifications"
       :key="notification.id"
       :type="notification.type"
-      :class="'notification-item'"
+      :id="notification.id"
     />
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-import BaseNotificationVue from './BaseNotification.vue'
-
-const props = defineProps({
-  notifications: {
-    type: Array,
-    required: true
-  }
-})
+import BaseNotificationVue from '../components/BaseNotification.vue'
+import { useNotificationsStore } from '../store/notificationStore'
+import { storeToRefs } from 'pinia'
+const store = useNotificationsStore()
+const { notifications } = storeToRefs(store)
 </script>
 
 <style scoped>

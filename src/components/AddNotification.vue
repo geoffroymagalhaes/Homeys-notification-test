@@ -5,12 +5,12 @@
 </template>
 
 <script setup>
-import { defineEmits } from 'vue'
+import { useNotificationsStore } from '../store/notificationStore'
 
-const emit = defineEmits(['add-notification'])
+const store = useNotificationsStore()
 
 function notify() {
-  emit('add-notification')
+  store.addNotification()
 }
 </script>
 

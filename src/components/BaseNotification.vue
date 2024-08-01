@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isVisible" :class="`notificationContainer ${type}`">
+  <div :class="`notificationContainer ${type}`">
     <div :class="'notificationHead'">
       <div>
         <img
@@ -29,8 +29,8 @@
         <h1 :class="'notificationTitle'">Modal Window</h1>
       </div>
 
-      <button :class="'notificationButton'" @click="hideNotification">
-        <img src="../assets/icons/X.svg" alt="" />
+      <button :class="'notificationButton'" @click="removeNotification">
+        <img src="../assets/icons/X.svg" alt="incon-X" />
       </button>
     </div>
 
@@ -43,14 +43,20 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useNotificationsStore } from '../store/notificationStore'
 
-const props = defineProps(['type'])
+const props = defineProps(['type', 'id'])
 
-const isVisible = ref(true)
+const store = useNotificationsStore()
 
-function hideNotification() {
-  isVisible.value = false
+function removeNotification() {
+  store.removeNotification(props.id)
 }
+
+// const isVisible = ref(true)
+// function hideNotification() {
+//   isVisible.value = false
+// }
 </script>
 
 <style scoped>
