@@ -16,6 +16,7 @@ function notify() {
 
 <style scoped>
 .addIcon {
+  margin-left: 20px;
   transition: transform 0.3s ease;
 }
 .addIcon:hover {

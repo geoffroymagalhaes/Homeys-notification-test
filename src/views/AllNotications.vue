@@ -14,6 +14,9 @@ function getRandomInt(max) {
 }
 
 function addNotification() {
+  if (notifications.value.length >= 5) {
+    notifications.value.shift() // Retire le premier élément du tableau
+  }
   notifications.value.push({ id: id.value++, type: types[getRandomInt(4)] })
 }
 </script>
