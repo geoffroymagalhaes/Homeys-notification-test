@@ -1,5 +1,5 @@
 <template>
-  <div :class="`notificationContainer ${type}`">
+  <div v-if="isVisible" :class="`notificationContainer ${type}`">
     <div :class="'notificationHead'">
       <div>
         <img
@@ -29,7 +29,9 @@
         <h1 :class="'notificationTitle'">Modal Window</h1>
       </div>
 
-      <button :class="'notificationButton'"><img src="../assets/icons/X.svg" alt="" /></button>
+      <button :class="'notificationButton'" @click="hideNotification">
+        <img src="../assets/icons/X.svg" alt="" />
+      </button>
     </div>
 
     <p :class="'notificationDescription'">
@@ -40,7 +42,15 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 const props = defineProps(['type'])
+
+const isVisible = ref(true)
+
+function hideNotification() {
+  isVisible.value = false
+}
 </script>
 
 <style scoped>
@@ -91,6 +101,10 @@ const props = defineProps(['type'])
   width: 20px;
   height: 20px;
 }
+:hover .notificationButton {
+  cursor: pointer;
+}
+
 .danger {
   background-color: #f7e4e4;
   border: solid 2px #d29393;
